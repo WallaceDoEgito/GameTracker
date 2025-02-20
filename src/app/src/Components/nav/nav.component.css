@@ -1,0 +1,58 @@
+nav{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas: 
+    ". . . search search search search . . buttonDropdown buttonDropdown";
+    margin-top: 50px;
+}
+
+.SearchBar{
+    grid-area: search;
+    display: flex;
+    background-color: white;
+    align-content: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 5px;
+
+}
+
+.SearchBar > input {
+    border: none;
+    height: 45px;
+    width:100%;
+    margin: auto;
+    font-size: large;
+}
+
+.SearchBar > img {
+    height: auto;
+    width: 20px;
+    margin-left: 5px;
+}
+
+.SearchBar > input:focus {
+    outline: none;
+}
+
+.sortDropdown{
+    grid-area: buttonDropdown;
+    border-radius: 5px;
+    width: 101px;
+    height: 48px;
+}
+
+.sortDropdown:hover{
+    cursor: pointer;
+    box-shadow: none;
+    
+}
+.DeleteAllText{
+    background-image: url('/cross-close.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    margin-top: 13px;
+}
