@@ -1,0 +1,42 @@
+.HeaderBar{
+    display: flex;
+    background-color:#1C0430 ;
+    height: 13vh;
+    width: 100%;
+    border-radius: 4px;
+    justify-content: end;
+    align-items: center;
+}
+.Shadow{
+    background-color:#3E076C ;
+    height: 9px;
+    width: 100%;
+    border-radius: 4px;
+}
+.AddButton{
+    border: none;
+    width: 101px;
+    height: 48px;
+    background-color: #7A5AB6;
+    cursor: pointer;
+    margin-right: 2vw;
+    border-radius: 5px;
+}
+
+.AddButton:hover{
+    transition: 60ms;
+    width: 103px;
+    height: 50px;
+}
+
+@media (max-width: 400px) {
+    .AddButton{
+        width: 70px;
+    }
+    .AddButton:hover{
+        transition: 60ms;
+        width: 73px;
+        height: 50px;
+    }
+    
+}
