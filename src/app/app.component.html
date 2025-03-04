@@ -1,3 +1,9 @@
 <app-header/>
 <app-nav/>
+<div class="ConteinerGames">
+    @for (game of GameList; track $index) {
+        <app-game [gameInput]="game"/>
+    }
+
+</div>
 <router-outlet />

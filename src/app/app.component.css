@@ -1,0 +1,8 @@
+.ConteinerGames{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-left: 80px;
+    margin-top: 40px;
+}
