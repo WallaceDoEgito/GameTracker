@@ -1,8 +1,13 @@
 <app-header/>
-<app-nav/>
+<app-nav (inputDataEvent)="setFilter($event)"/>
 <div class="ConteinerGames">
     @for (game of GameList; track $index) {
-        <app-game [gameInput]="game"/>
+        @if (filter === '') {
+            <app-game [gameInput]="game"/>
+        }
+        @else if (game.gameName.toLocaleLowerCase().includes(filter.toLocaleLowerCase())) {
+            <app-game [gameInput]="game"/>
+        }
     }
 
 </div>

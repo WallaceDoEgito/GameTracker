@@ -18,5 +18,10 @@ export class AppComponent {
   title = 'GameTracker';
   private apiService = inject(ApiService);
   GameList:Game[] = this.apiService.Get();
+  filter = ''
+
+  setFilter(data:string){
+    this.filter = data;
+  }
 
 }

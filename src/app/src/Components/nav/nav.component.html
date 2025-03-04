@@ -1,7 +1,7 @@
 <nav>
     <span class="SearchBar">
         <img src="Lupa.svg" width="20px" height="20px">
-        <input type="text">
+        <input type="text"  [(ngModel)]="inputData" (keyup)="dataEmitter()">
         <div class="DeleteAllText"></div>
     </span>
     <button class="sortDropdown">Sort</button>

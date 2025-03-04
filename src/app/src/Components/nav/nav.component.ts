@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-nav',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
-
+  @Output() inputDataEvent = new EventEmitter<string>()
+  inputData!:string
+  
+  dataEmitter(){
+    this.inputDataEvent.emit(this.inputData);
+  }
 }
