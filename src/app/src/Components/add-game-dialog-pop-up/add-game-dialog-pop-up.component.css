@@ -1,0 +1,23 @@
+.DialogConteiner{
+    overflow: hidden;
+    position:fixed;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popupContent{
+    width: 50vw;
+    height: 80vh;
+    background-color: rgb(60, 57, 61);
+}
+
+.closeButton{
+    font-size: 100px;
+    cursor: pointer;
+    color: wheat;
+}

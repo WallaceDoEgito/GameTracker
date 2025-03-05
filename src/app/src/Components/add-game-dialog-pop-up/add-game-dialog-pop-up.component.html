@@ -1,1 +1,28 @@
-<p>add-game-dialog-pop-up works!</p>
+<div class="DialogConteiner">
+    <span class="closeButton" (click)="CloseClickEvent()">&times;</span>
+    <div class="popupContent">
+        <div class="gameName">
+            <span class="NomeDescription">Nome do jogo</span>
+            <input type="text" class="NameInput" [(ngModel)]="gameName" (blur)="SearchName()">
+        </div>
+        <div class="gameUrl">
+            <span class="UrlDescription">Imagem (url)</span>
+            <input type="text" class="NameInput" [(ngModel)]="gameImageUrl" >
+        </div>
+        <div class="hoursPlayedInicially">
+            <span class="inputDescription">Quantas hora ja jogadas?</span>
+            <input type="text" class="NameInput" [(ngModel)]="hoursPlayed">
+        </div>
+        <div class="rating">
+            <span class="RatingDescription">Nota</span>
+            <input type="number" class="NameInput" min="1" max="5" [(ngModel)]="rating">
+        </div>
+        <div class="review">
+            <span class="ReviewDescription">Review</span>
+            <input type="text" class="NameInput" [(ngModel)]="review">
+        </div>
+        <button class="Reset">Reset</button>
+        <button class="Add" (click)="AddClickEvent()">Add</button>
+    </div>
+
+</div>

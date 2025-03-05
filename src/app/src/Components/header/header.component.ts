@@ -7,8 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  @Output() clickEvent = new EventEmitter();
+  @Output() addClickEvent = new EventEmitter();
   OnAddButtonClick(){
-    console.log("clicado")
+    this.addClickEvent.emit();
   }
 }
