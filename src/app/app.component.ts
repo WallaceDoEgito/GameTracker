@@ -8,6 +8,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { GameComponent } from './src/Components/game/game.component';
 import { AddGameDialogPopUpComponent } from "./src/Components/add-game-dialog-pop-up/add-game-dialog-pop-up.component";
+import { ApiMockService } from './src/Services/api-mock.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ import { AddGameDialogPopUpComponent } from "./src/Components/add-game-dialog-po
 export class AppComponent {
   conteinerRef = viewChild('popUpConteiner', {read:ViewContainerRef})
   title = 'GameTracker';
-  private apiService = inject(ApiService);
+  private apiService = inject(ApiMockService);
   GameList:Game[] = this.apiService.Get();
   filter = ''
   #popUpReference?:ComponentRef<AddGameDialogPopUpComponent>
