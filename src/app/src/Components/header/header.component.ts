@@ -8,7 +8,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   @Output() addClickEvent = new EventEmitter();
-  OnAddButtonClick(){
+  OnAddButtonClick(event:any){
+    event.stopPropagation();
     this.addClickEvent.emit();
   }
 }

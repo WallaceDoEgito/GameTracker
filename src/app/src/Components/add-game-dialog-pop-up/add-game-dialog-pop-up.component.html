@@ -1,6 +1,6 @@
 <div class="DialogConteiner">
     <span class="closeButton" (click)="CloseClickEvent()">&times;</span>
-    <div class="popupContent">
+    <div class="popupContent" appOutsideClick (clickOutside)="CloseClickEvent()" >
         <div class="gameName">
             <span class="NomeDescription">Nome do jogo</span>
             <input type="text" class="NameInput" [(ngModel)]="gameName" (blur)="SearchName()">
