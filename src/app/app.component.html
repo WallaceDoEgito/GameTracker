@@ -1,4 +1,5 @@
-<app-header (addClickEvent)="AddButtonClicked()"/>
+<ng-container #popUpConteiner></ng-container>
+<app-header (addClickEvent)="CreatePopUp()"/>
 <app-nav (inputDataEvent)="setFilter($event)"/>
 <div class="ConteinerGames">
     @for (game of GameList; track $index) {
