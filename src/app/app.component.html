@@ -1,4 +1,4 @@
-<app-header/>
+<app-header (addClickEvent)="AddButtonClicked()"/>
 <app-nav (inputDataEvent)="setFilter($event)"/>
 <div class="ConteinerGames">
     @for (game of GameList; track $index) {

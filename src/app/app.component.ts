@@ -24,4 +24,8 @@ export class AppComponent {
     this.filter = data;
   }
 
+  AddButtonClicked(){
+    
+  }
+
 }
