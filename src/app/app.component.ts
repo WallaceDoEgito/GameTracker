@@ -31,6 +31,8 @@ export class AppComponent {
   CreatePopUp(){
     this.conteinerRef()?.clear()
     this.#popUpReference = this.conteinerRef()?.createComponent(AddGameDialogPopUpComponent)
+    this.#popUpReference?.setInput("gameList", this.GameList)
+    this.#popUpReference?.instance.addEvent.subscribe((game:Game) => this.GameList.push(game))
     this.#popUpReference?.instance.closeEvent.subscribe(() => this.conteinerRef()?.clear())
   }
 

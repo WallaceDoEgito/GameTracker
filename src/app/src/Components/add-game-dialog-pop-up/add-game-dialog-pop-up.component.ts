@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {OutsideClickDirective} from '../../Directives/outside-click.directive'
 import { NgOptimizedImage } from '@angular/common';
+import { Game } from '../../../Classes/Games';
 
 @Component({
   selector: 'app-add-game-dialog-pop-up',
@@ -11,10 +12,10 @@ import { NgOptimizedImage } from '@angular/common';
 })
 export class AddGameDialogPopUpComponent {
   gameName!:string;
-  gameImageUrl:string = " ";
+  gameImageUrl:string = "";
   hoursPlayed!:number;
   rating!:number;
-  review!:string;
+  review:string = "";
 
   nameError:boolean = false
   hoursError:boolean = false
@@ -26,7 +27,8 @@ export class AddGameDialogPopUpComponent {
 
 
   @Output() closeEvent = new EventEmitter()
-  
+  @Output() addEvent = new EventEmitter<Game>();
+  @Input() gameList! :Game[];
 
   CloseClickEvent(){
     this.closeEvent.emit()
@@ -34,7 +36,12 @@ export class AddGameDialogPopUpComponent {
 
   AddClickEvent(){
     if(!this.CheckInputsForErrors())return
-    console.log("deu bom")
+    console.log("Deu bom")
+    if(this.hoursPlayed == undefined) this.hoursPlayed = 0;
+    if(this.rating == undefined) this.rating = 0;
+    let newGame:Game = new Game(0,this.gameName,this.gameImageUrl,this.hoursPlayed, this.review, this.rating)
+    this.addEvent.emit(newGame)
+    this.closeEvent.emit()
   }
 
   SearchName(){
@@ -44,6 +51,10 @@ export class AddGameDialogPopUpComponent {
     this.resetErrors();
     if(this.gameName == undefined||this.gameName.trim() === ""){
       this.nameErrorMensage += "O nome não pode ser vazio"
+      this.nameError = true
+    }
+    if(this.CheckIfExists(this.gameName)){
+      this.nameErrorMensage += "Esse jogo ja foi adicionado"
       this.nameError = true
     }
     if(this.hoursPlayed < 0){
@@ -65,5 +76,11 @@ export class AddGameDialogPopUpComponent {
     this.nameError = false
     this.hoursError = false
     this.ratingError = false
+  }
+  CheckIfExists(gameName:string) :boolean{
+    for(let games of this.gameList){
+      if(games.gameName.toLocaleLowerCase() === gameName.toLocaleLowerCase()) return true
+    }
+    return false;
   }
 }
