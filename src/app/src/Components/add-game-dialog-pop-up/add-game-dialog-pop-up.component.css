@@ -1,7 +1,7 @@
 .DialogConteiner{
-    overflow: hidden;
     position:fixed;
     display: flex;
+    flex-direction: row;
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -12,12 +12,109 @@
 
 .popupContent{
     width: 50vw;
-    height: 80vh;
-    background-color: rgb(60, 57, 61);
+    height: 70vh;
+    background: rgb(48,21,85);
+    background: radial-gradient(circle, rgba(48,21,85,1) 27%, rgb(43, 24, 65) 78%, rgb(53, 29, 82) 100%);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-shadow: purple 1px 0 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 8px;
 }
 
+
 .closeButton{
-    font-size: 100px;
+    font-size: 80px;
     cursor: pointer;
-    color: wheat;
+    color: white;
+    margin-bottom: 74vh;
+}
+
+.inputplusimage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.TextInputCont{
+    display: flex;
+    flex-direction: column;
+    gap:4px
+}
+.number{
+    width: 5vw !important;
+    appearance: textfield;
+}
+
+.conteinerInputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.imagePreview{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 10px;
+}
+
+.imagePreview > img {
+    align-self: center;
+}
+
+.preview{
+    text-align: center;
+}
+
+.popupContent > div:first-child{
+    margin-top: 40px;
+}
+
+div > input {
+    border: none;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    margin-bottom: 3vh;
+}
+
+.buttons > button{
+    width: 8vw;
+    height: 9vh;
+}
+
+div > input {
+    height: 3vh;
+    width: 20vw;
+}
+
+@media (max-width:1160px) {
+    .imagePreview{
+        display:none ;
+    }
+    .TextInputCont > textarea{
+        width: 47vw;
+        height: 9vh;
+    }
+}
+
+@media (max-width:616px) {
+    .buttons{
+        flex-direction: column;
+        margin:auto;
+        gap:5px
+    }
+    .buttons > button{
+        width: 15vw;
+        height: 5vh;
+    }
+    .imagePreview{
+        display: hidden;
+    }
 }

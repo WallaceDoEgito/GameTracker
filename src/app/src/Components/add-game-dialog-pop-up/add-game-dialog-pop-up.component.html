@@ -1,28 +1,39 @@
 <div class="DialogConteiner">
-    <span class="closeButton" (click)="CloseClickEvent()">&times;</span>
     <div class="popupContent" appOutsideClick (clickOutside)="CloseClickEvent()" >
-        <div class="gameName">
-            <span class="NomeDescription">Nome do jogo</span>
-            <input type="text" class="NameInput" [(ngModel)]="gameName" (blur)="SearchName()">
+        <div class="inputplusimage">
+            <div class="conteinerInputs">
+                <div class="TextInputCont">
+                    <span class="NomeDescription">Nome do jogo</span>
+                    <input type="text" class="NameInput" [(ngModel)]="gameName" (blur)="SearchName()">
+                </div>
+                <div class="TextInputCont">
+                    <span class="UrlDescription">Imagem (url)</span>
+                    <input type="text" class="NameInput" [(ngModel)]="gameImageUrl" >
+                </div>
+                <div class="TextInputCont">
+                    <span class="inputDescription">Quantas horas ja jogadas? <br>(Deixe em branco caso nenhuma)</span>
+                    <input type="number" step="0.01" min="0" class="NameInput number" [(ngModel)]="hoursPlayed">
+                </div>
+                <div class="TextInputCont">
+                    <span class="RatingDescription">Nota (1 a 5)</span>
+                    <input type="number" class="NameInput number" min="1" max="5" [(ngModel)]="rating">
+                </div>
+                <div class="TextInputCont">
+                    <span class="ReviewDescription">Review</span>
+                    <textarea [(ngModel)]="review" rows="6" cols="10"></textarea>
+                </div>
+            </div>
+            <div class="imagePreview">
+                <img ngSrc="{{gameImageUrl}}" width="222px" height="285px" [placeholderConfig]="{blur: false}" placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAOVBMVEXz9Pa5vsq2u8jN0dnV2N/o6u7w8fTi5OnFydO+ws3f4ee6v8vY2+H29/jy9Pbu7/LJztbCx9HR1ty/NMEIAAACq0lEQVR42u3cYXaqMBBA4cyEgEAi4P4X+34oLSra9IA9E979FtDj7SAJUOocAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAqrQ3Y311iH5fsaktBTYn3d/Y2JljlM/orAR2IsdOHNqPFbY2TqKdXj/Orl/C24/sLHwV0ygiIv2466n0+kNlNFHYiohotfNyWKmIyKm2U9jsffqyU+gopLDMwiGE+sCFjRdV1SkOxyw8X2Rer6cNe2e7hfVJv3ddGg9YeNHlxrIPhyvs9GHvXB+sMJ2eLoDSsQrDwwhF/cFm+HiQikxvP+Prk63RwhSfCtt3i6J/fbK1Wlj9qvCiIjEd9yg9e32zZFotHPLPNOd55VyfotnVYsq9XVZ7fbvxsbviZx6kZ7+Y9toU7e7a/P1x+mI5qP3doRyLuraYlokxY4LrUzRcOPj56knaxmVMcP1XYfkKODW+VVWZqiHlTXBtisbvYgwhhKF22RNcmWLBd6JWJ/g8xXIL64u+eg5zl1huodfXj5riAQrPF333NG0xxVILvb5/YBhLKxzC8+XSD4mpqMLQt2F59hj158e+saDCFFrRacj9Dj5MsYTC0IuIfk9xzAoU7QopTKG93dq/7d3yJiiiVSqjMPTzJ25Dcu6cOUERjUUUzhP8mmLuBIsp/Jrg9Soq+OzAMgqXE7wm/uKvhIoovJ/gLxVQ+DTBwxVummABhRsnWEDhxgmaL9w8QfOFmydovTDlb11KLawopJBCCimk8E8Kbd+nGcJ2Q9F39fNRSKH5wtSZeyvI7/sm8O053MnCCOc/C/7Iu2vexIuyn3z/sLEQ6Orp4O+QOtf0HwrsGyOFrhP9QJ+qmUDnwtju/jp+PwZT/1chdNW+YuMAAAAAAAAAAAAAAAAAAAAAAAAAAACA/9s/LTI30XlcBHoAAAAASUVORK5CYII=" >
+                <span class="preview">Este é um preview da imagem <br> provida no campo URL</span>
+            </div>
         </div>
-        <div class="gameUrl">
-            <span class="UrlDescription">Imagem (url)</span>
-            <input type="text" class="NameInput" [(ngModel)]="gameImageUrl" >
+        
+        <div class="buttons">
+            <button class="Reset">Reset</button>
+            <button class="Add" (click)="AddClickEvent()">Add</button>
         </div>
-        <div class="hoursPlayedInicially">
-            <span class="inputDescription">Quantas hora ja jogadas?</span>
-            <input type="text" class="NameInput" [(ngModel)]="hoursPlayed">
-        </div>
-        <div class="rating">
-            <span class="RatingDescription">Nota</span>
-            <input type="number" class="NameInput" min="1" max="5" [(ngModel)]="rating">
-        </div>
-        <div class="review">
-            <span class="ReviewDescription">Review</span>
-            <input type="text" class="NameInput" [(ngModel)]="review">
-        </div>
-        <button class="Reset">Reset</button>
-        <button class="Add" (click)="AddClickEvent()">Add</button>
     </div>
+    <span class="closeButton" (click)="CloseClickEvent()">&times;</span>
 
 </div>
