@@ -2,25 +2,28 @@
     <div class="popupContent" appOutsideClick (clickOutside)="CloseClickEvent()" >
         <div class="inputplusimage">
             <div class="conteinerInputs">
-                <div class="TextInputCont">
-                    <span class="NomeDescription">Nome do jogo</span>
+                <div class="TextInputCont" [class.error]="nameError">
+                    <span class="NomeDescription" >*Nome do jogo</span>
                     <input type="text" class="NameInput" [(ngModel)]="gameName" (blur)="SearchName()">
+                    <span class="textError">{{nameErrorMensage}}</span>
                 </div>
                 <div class="TextInputCont">
                     <span class="UrlDescription">Imagem (url)</span>
                     <input type="text" class="NameInput" [(ngModel)]="gameImageUrl" >
                 </div>
-                <div class="TextInputCont">
+                <div class="TextInputCont" [class.expanded]="hoursError">
                     <span class="inputDescription">Quantas horas ja jogadas? <br>(Deixe em branco caso nenhuma)</span>
                     <input type="number" step="0.01" min="0" class="NameInput number" [(ngModel)]="hoursPlayed">
+                    <span class="textError">{{hoursErrorMensage}}</span>
                 </div>
-                <div class="TextInputCont">
-                    <span class="RatingDescription">Nota (1 a 5)</span>
+                <div class="TextInputCont" [class.error]="">
+                    <span class="RatingDescription">Nota (1 a 5) <br> (Deixe em branco caso não queira avaliar agora)</span>
                     <input type="number" class="NameInput number" min="1" max="5" [(ngModel)]="rating">
+                    <span class="textError">{{ratingErrorMensage}}</span>
                 </div>
                 <div class="TextInputCont">
                     <span class="ReviewDescription">Review</span>
-                    <textarea [(ngModel)]="review" rows="6" cols="10"></textarea>
+                    <textarea [(ngModel)]="review" rows="4" cols="10"></textarea>
                 </div>
             </div>
             <div class="imagePreview">

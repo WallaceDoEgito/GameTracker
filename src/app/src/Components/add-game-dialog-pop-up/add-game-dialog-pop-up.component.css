@@ -37,6 +37,15 @@
     justify-content: space-evenly;
 }
 
+input{
+    outline: none;
+    padding-left: 10px;
+}
+
+textarea{
+    padding-left: 4px;
+}
+
 .TextInputCont{
     display: flex;
     flex-direction: column;
@@ -50,7 +59,7 @@
 .conteinerInputs{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 .imagePreview{
     display: flex;
@@ -92,6 +101,20 @@ div > input {
 div > input {
     height: 3vh;
     width: 20vw;
+}
+
+.error{
+    color: red !important;
+}
+
+.error > input{
+    border: 1px solid red;
+
+}
+
+.textError{
+    color: red;
+    font-size:x-small;
 }
 
 @media (max-width:1160px) {
