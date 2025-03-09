@@ -25,6 +25,8 @@ export class AddGameDialogPopUpComponent {
   hoursErrorMensage!:string
   ratingErrorMensage!:string
 
+  sendingData:boolean =false;
+
 
   @Output() closeEvent = new EventEmitter()
   @Output() addEvent = new EventEmitter<Game>();
@@ -36,11 +38,12 @@ export class AddGameDialogPopUpComponent {
 
   AddClickEvent(){
     if(!this.CheckInputsForErrors())return
-    console.log("Deu bom")
+    this.sendingData = true;
     if(this.hoursPlayed == undefined) this.hoursPlayed = 0;
     if(this.rating == undefined) this.rating = 0;
     let newGame:Game = new Game(0,this.gameName,this.gameImageUrl,this.hoursPlayed, this.review, this.rating)
     this.addEvent.emit(newGame)
+    this.sendingData = false;
     this.closeEvent.emit()
   }
 
@@ -61,7 +64,7 @@ export class AddGameDialogPopUpComponent {
       this.hoursErrorMensage += "Esse campo necessita de um numero não negativo"
       this.hoursError = true
     }
-    if(this.rating != undefined && (this.rating < 1 || this.rating > 5 )){
+    if((this.rating != undefined && this.rating != 0) && (this.rating < 1 || this.rating > 5 )){
       this.ratingErrorMensage += "Digite um valor entre 1 e 5 caso quiser avaliar"
       this.ratingError = true
     }
@@ -82,5 +85,13 @@ export class AddGameDialogPopUpComponent {
       if(games.gameName.toLocaleLowerCase() === gameName.toLocaleLowerCase()) return true
     }
     return false;
+  }
+  ResetClickEvent(){
+    this.gameName = ""
+    this.gameImageUrl = "";
+    this.hoursPlayed = 0;
+    this.rating = 0
+    this.review = "";
+    this.resetErrors();
   }
 }

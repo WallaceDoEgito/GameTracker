@@ -33,7 +33,7 @@
         </div>
         
         <div class="buttons">
-            <button class="Reset">Reset</button>
+            <button class="Reset" (click)="ResetClickEvent()" [disabled]="sendingData">Reset</button>
             <button class="Add" (click)="AddClickEvent()">Add</button>
         </div>
     </div>
