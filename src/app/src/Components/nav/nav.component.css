@@ -20,10 +20,11 @@ nav{
 
 .SearchBar > input {
     border: none;
-    height: 45px;
+    height: 60px;
     width:100%;
     margin: auto;
     font-size: large;
+    padding-left: 5px ;
 }
 
 .SearchBar > img {
@@ -49,10 +50,7 @@ nav{
     
 }
 .DeleteAllText{
-    background-image: url('/cross-close.svg');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
-    margin-top: 13px;
+    cursor: pointer;
+    font-size: 45px;
+    margin-right: 5px;
 }
