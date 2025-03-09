@@ -14,4 +14,9 @@ export class NavComponent {
   dataEmitter(){
     this.inputDataEvent.emit(this.inputData);
   }
+
+  resetSearch(){
+    this.inputData = ''
+    this.dataEmitter()
+  }
 }
