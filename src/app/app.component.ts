@@ -19,7 +19,7 @@ import { ApiMockService } from './src/Services/api-mock.service';
 export class AppComponent {
   conteinerRef = viewChild('popUpConteiner', {read:ViewContainerRef})
   title = 'GameTracker';
-  private apiService = inject(ApiMockService);
+  private apiService = inject(ApiService);
   GameList:Game[] = this.apiService.Get();
   filter = ''
   #popUpReference?:ComponentRef<AddGameDialogPopUpComponent>
@@ -32,8 +32,10 @@ export class AppComponent {
     this.conteinerRef()?.clear()
     this.#popUpReference = this.conteinerRef()?.createComponent(AddGameDialogPopUpComponent)
     this.#popUpReference?.setInput("gameList", this.GameList)
-    this.#popUpReference?.instance.addEvent.subscribe((game:Game) => this.GameList.push(game))
+    this.#popUpReference?.instance.addEvent.subscribe((game:Game) => { this.apiService.Post(game)})
     this.#popUpReference?.instance.closeEvent.subscribe(() => this.conteinerRef()?.clear())
   }
+
+
 
 }

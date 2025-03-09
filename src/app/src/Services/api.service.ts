@@ -14,12 +14,17 @@ export class ApiService {
   constructor(private http:HttpClient) { }
   Get(){
     this.http.get<Game[]>("http://localhost:5155/api/Jogos").subscribe(element => 
-    {
+      {
       for(let obj of element){
         this.gameList.push(obj)
       }      
     })
     return this.gameList;
-
+  }
+  Post(game:Game){
+    this.http.post<Game>("http://localhost:5155/api/Jogos", game).subscribe((config) => {
+      console.log(config)
+      this.gameList.push(game)
+    })
   }
 }

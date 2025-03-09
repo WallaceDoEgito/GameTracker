@@ -14,13 +14,7 @@ export class ApiMockService {
     this.gameList.push(new Game(10, "Vava", "https://i.ytimg.com/vi/OLpVvtWApVM/maxresdefault.jpg", 0, "Achei meio paia", 1))
     return this.gameList;
   }
-//   constructor(id:number,name:string,url:string,time:number,rating:number) {
-//     this.gameId = id
-//     this.gameName = name
-//     this.gameImageUrl = url
-//     this.hoursPlayed = time
-//     this.rating = rating
-
-    
-// }
+  Post(game:Game){
+    this.gameList.push(game);
+  }
 }
