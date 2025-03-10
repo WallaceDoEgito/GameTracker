@@ -49,7 +49,7 @@ textarea{
 .TextInputCont{
     display: flex;
     flex-direction: column;
-    gap:4px
+    gap:13px
 }
 .number{
     width: 5vw !important;
@@ -59,7 +59,7 @@ textarea{
 .conteinerInputs{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1px;
 }
 .imagePreview{
     display: flex;
