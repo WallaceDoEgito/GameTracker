@@ -15,6 +15,7 @@ export class ApiMockService {
     return this.gameList;
   }
   Post(game:Game){
+    game.gameId = Math.floor(Math.random() * 10000)
     this.gameList.push(game);
   }
 }
