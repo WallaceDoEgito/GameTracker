@@ -26,9 +26,13 @@ export class ApiService {
   }
   Post(game:Game){
     this.http.post<Game>("http://localhost:5155/api/Jogos", game).subscribe((config) => {
-      console.log(config)
-      game.gameId = config.gameId
-      this.gameList.push(game)
+      this.Get()
+    })
+  }
+  Delete(game:Game){
+    this.http.delete(`http://localhost:5155/api/Jogos/${game.gameId}`).subscribe( (res) => {
+    this.Get()
+
     })
   }
 }

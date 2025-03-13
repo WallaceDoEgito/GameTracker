@@ -18,4 +18,12 @@ export class ApiMockService {
     game.gameId = Math.floor(Math.random() * 10000)
     this.gameList.push(game);
   }
+
+  Delete(game:Game){
+    for(let i = 0; i< this.gameList.length;i++){
+      if(this.gameList[i].gameId === game.gameId) {
+        this.gameList.splice(i, 1);
+      }
+    }
+  }
 }
