@@ -5,10 +5,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-game',
-  imports: [MatMenuModule, MatButtonModule, MatIconModule],
+  imports: [MatMenuModule, MatButtonModule, MatIconModule, RouterLink, RouterOutlet],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
 })

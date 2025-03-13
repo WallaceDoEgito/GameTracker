@@ -1,5 +1,5 @@
 <div class="gameCard">
-    <img src="{{gameInput.gameImageUrl}}" > 
+    <img src="{{gameInput.gameImageUrl}}" [routerLink]="['/games', ]" > 
 </div>
 <div class="conteinerInfos">
     <div class="infos">
@@ -25,6 +25,6 @@
             <span>Adicionar Tempo</span>
         </button>
     </mat-menu>
-
-    
 </div>
+
+<router-outlet/>

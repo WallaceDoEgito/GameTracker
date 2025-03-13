@@ -1,3 +1,9 @@
 import { Routes } from '@angular/router';
+import { GameMoreDetailComponent } from './src/Components/game-more-detail/game-more-detail.component';
+import { GameMainPageComponent } from './src/game-main-page/game-main-page.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {path:'', component: GameMainPageComponent},
+    {path:'game/:id', component: GameMoreDetailComponent},
+    {path:'**', redirectTo:''}
+];
