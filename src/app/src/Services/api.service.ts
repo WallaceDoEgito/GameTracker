@@ -35,4 +35,7 @@ export class ApiService {
 
     })
   }
+  getList(){
+    return this.gameList
+  }
 }

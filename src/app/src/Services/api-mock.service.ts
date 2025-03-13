@@ -26,4 +26,8 @@ export class ApiMockService {
       }
     }
   }
+  
+  GetList(){
+    return this.gameList
+  }
 }
