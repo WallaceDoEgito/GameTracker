@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Você deseja deletar esse jogo?</h1>
+<mat-dialog-content>
+    <span>Apagar esse jogo é uma ação irreversivel. <br> Você tem certeza?</span>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="DontDelete()">Não quero apagar</button>
+    <button mat-button (click)="DeleteConfirmation()">Sim, desejo apagar</button>
+
+</mat-dialog-actions>
