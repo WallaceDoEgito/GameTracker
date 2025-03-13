@@ -13,6 +13,9 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
   Get(){
+    while(this.gameList.length !== 0){
+      this.gameList.pop();
+    }
     this.http.get<Game[]>("http://localhost:5155/api/Jogos").subscribe(element => 
       {
       for(let obj of element){
