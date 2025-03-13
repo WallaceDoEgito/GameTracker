@@ -36,6 +36,10 @@ export class AppComponent {
     this.#popUpReference?.instance.closeEvent.subscribe(() => this.conteinerRef()?.clear())
   }
 
+  DeleteGame(gameToBeDeleted:Game){
+    this.apiService.Delete(gameToBeDeleted)
+  }
+
 
 
 }

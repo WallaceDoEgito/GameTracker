@@ -19,5 +19,14 @@ export class GameComponent {
 
   OpenDialogConfirmation(){
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result === undefined || result === false) return;
+      this.DeleteGame()
+    })
   }
+
+  DeleteGame(){
+    this.deleteGameEvent.emit(this.gameInput)
+  }
+
 }

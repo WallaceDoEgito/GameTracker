@@ -4,10 +4,10 @@
 <div class="ConteinerGames">
     @for (game of GameList; track $index) {
         @if (filter === '') {
-            <app-game [gameInput]="game"/>
+            <app-game [gameInput]="game" (deleteGameEvent)="DeleteGame($event)"/>
         }
         @else if (game.gameName.toLocaleLowerCase().includes(filter.toLocaleLowerCase())) {
-            <app-game [gameInput]="game"/>
+            <app-game [gameInput]="game" (deleteGameEvent)="DeleteGame($event)"/>
         }
     }
 
