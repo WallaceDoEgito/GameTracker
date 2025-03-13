@@ -14,7 +14,7 @@
 .gameName{
     color: white;
     text-align: center;
-    text-shadow: purple 1px 0 10px
+    text-shadow: purple 1px 0 2px;
 }
 
 .totalTime{
@@ -29,4 +29,13 @@
     text-align: center;
     opacity: 48%;
     margin-top: 4px;
+}
+
+.conteinerInfos{
+    display: flex;
+
+}
+
+.infos{
+    padding-left: 35px;
 }

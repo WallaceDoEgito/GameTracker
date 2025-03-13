@@ -1,6 +1,28 @@
 <div class="gameCard">
     <img src="{{gameInput.gameImageUrl}}" > 
 </div>
-<div class="gameName">{{gameInput.gameName}}</div>
-<div class="totalTime">Tempo Total: {{gameInput.hoursPlayed.toFixed(2)}}h</div>
-<div class="weekTime">Tempo semanal: </div>
+<div class="conteinerInfos">
+    <div class="infos">
+        <div class="gameName">{{gameInput.gameName}}</div>
+        <div class="totalTime">Tempo Total: {{gameInput.hoursPlayed.toFixed(2)}}h</div>
+        <div class="weekTime">Tempo semanal: </div>
+    </div>
+
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu yPosition="below">
+        <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Deletar Jogo</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+        </button>
+        <button mat-menu-item >
+            <mat-icon>add</mat-icon>
+            <span>Adicionar Tempo</span>
+        </button>
+    </mat-menu>
+</div>
