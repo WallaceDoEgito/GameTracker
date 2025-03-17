@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+    ports:
+      - "5155:8080"
+    depends_on:
+      - db
+  
+  frontend:
+    build: 
+      context: ./Frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+
+
+  db:
+    build: 
+      context: ./Mssql
+    environment:
+      - MSSQL_SA_PASSWORD=JRhPRt&n#xs03i*XRCja2!  # Senha exposta apenas como exemplo
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+
+
