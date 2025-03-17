@@ -1,0 +1,12 @@
+.HeaderBar{
+    background-color:#1C0430 ;
+    height: 10vh;
+    width: 100%;
+    border-radius: 4px;
+}
+.Shadow{
+    background-color:#3E076C ;
+    height: 9px;
+    width: 100%;
+    border-radius: 4px;
+}
