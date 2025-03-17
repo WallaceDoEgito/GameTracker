@@ -3,10 +3,16 @@
     height: 10vh;
     width: 100%;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
 }
 .Shadow{
     background-color:#3E076C ;
     height: 9px;
     width: 100%;
     border-radius: 4px;
+}
+
+#GoBack{
+    margin-left: 1vw;
 }
