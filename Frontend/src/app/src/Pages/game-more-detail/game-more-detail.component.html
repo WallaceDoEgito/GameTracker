@@ -8,7 +8,19 @@
 </header>
 <main>
     <div class="banner">
-
+        <img src="{{GameSelected?.backgroundImageLink}}">
+    </div>
+    <nav>
+        <div class="gameTitle">{{GameSelected?.gameName}}</div>
+        <div class="stars"></div>
+        <button mat-raised-button>editar</button>
+    </nav>
+    <div class="content">
+        <div class="review">Review: <br><i>{{GameSelected?.review}}</i></div>
+        
     </div>
     
+    <div class="gameImage">
+        <img src="{{GameSelected?.gameImageUrl}}" width="265px" height="394px">
+    </div>
 </main>
