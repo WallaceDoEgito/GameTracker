@@ -1,6 +1,6 @@
 import { Component, ComponentRef, inject, viewChild, ViewContainerRef } from '@angular/core';
 import { Game } from '../../../Classes/Games';
-import { AddGameDialogPopUpComponent } from '../../Components/add-game-dialog-pop-up/add-game-dialog-pop-up.component';
+import { AddGameDialogPopUpComponent } from '../../Components/Dialogs/add-game-dialog-pop-up/add-game-dialog-pop-up.component';
 import { ApiService } from '../../Services/api.service';
 import { HeaderComponent } from "../../Components/header/header.component";
 import { NavComponent } from "../../Components/nav/nav.component";
