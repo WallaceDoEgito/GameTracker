@@ -38,7 +38,6 @@ export class AddGameDialogPopUpComponent {
 
   AddClickEvent(){
     if(!this.CheckInputsForErrors())return
-    this.sendingData = true;
     if(this.hoursPlayed == undefined) this.hoursPlayed = 0;
     if(this.rating == undefined) this.rating = 0;
     let newGame:Game = new Game(0,this.gameName,this.gameImageUrl,this.hoursPlayed, this.review, this.rating)
@@ -52,12 +51,17 @@ export class AddGameDialogPopUpComponent {
 
   CheckInputsForErrors(): boolean{
     this.resetErrors();
-    if(this.gameName == undefined||this.gameName.trim() === ""){
-      this.nameErrorMensage += "O nome não pode ser vazio"
+    this.gameName = this.gameName.trim();
+    if(this.gameName == undefined||this.gameName === ""){
+      this.nameErrorMensage += "O nome não pode ser vazio "
+      this.nameError = true
+    }
+    if(this.gameName.length >= 20){
+      this.nameErrorMensage += "Nome muito grande "
       this.nameError = true
     }
     if(this.CheckIfExists(this.gameName)){
-      this.nameErrorMensage += "Esse jogo ja foi adicionado"
+      this.nameErrorMensage += "Esse jogo ja foi adicionado "
       this.nameError = true
     }
     if(this.hoursPlayed < 0){
