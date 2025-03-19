@@ -5,7 +5,7 @@ export class Game {
     hoursPlayed:number;
     review:string;
     rating:number;
-    public backgroundImageLink!:string;
+    public backgroundImageLink:string;
     constructor(id:number,name:string,url:string,time:number,review:string, rating:number) {
         this.gameId = id
         this.gameName = name
@@ -13,7 +13,7 @@ export class Game {
         this.hoursPlayed = time
         this.review = review
         this.rating = rating
-
+        this.backgroundImageLink = ""
         
     }
 
