@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Deseja trocar o banner?</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Novo link para a imagem</mat-label>
+        <input matInput [(ngModel)]="newLink">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="clickCancel()">Cancelar</button>
+    <button mat-button (click)="clickChange()">Trocar</button>
+</mat-dialog-actions>

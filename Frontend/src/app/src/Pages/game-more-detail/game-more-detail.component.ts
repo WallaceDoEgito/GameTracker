@@ -8,6 +8,7 @@ import {MatTooltip} from '@angular/material/tooltip';
 import { MatDialog } from '@angular/material/dialog';
 import { EditBannerComponent } from '../../Components/Dialogs/edit-banner/edit-banner.component';
 import { AddBannerComponent } from '../../Components/Dialogs/add-banner/add-banner.component';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-game-more-detail',
@@ -21,7 +22,7 @@ export class GameMoreDetailComponent implements OnInit {
   private router = inject(Router)
   public GameSelected?:Game
   readonly dialog = inject(MatDialog)
-  
+
   ngOnInit(){
     let gamelist:Game[] = this.ApiCalls.getList()
     this.GameSelected = this.FindGameById(gamelist, this.id)
@@ -48,6 +49,10 @@ export class GameMoreDetailComponent implements OnInit {
     })
   }
   EditBanner(){
-    const dialogAddRef = this.dialog.open(EditBannerComponent)
+    const dialogEditRef = this.dialog.open(EditBannerComponent)
+    dialogEditRef.afterClosed().subscribe((result)=>{
+      if(!result) return
+      this.GameSelected!.backgroundImageLink = result
+    })
   }
 }
