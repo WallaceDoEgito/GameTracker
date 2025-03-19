@@ -4,10 +4,14 @@ import { Game } from '../../../Classes/Games';
 import { Router } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTooltip} from '@angular/material/tooltip';
+import { MatDialog } from '@angular/material/dialog';
+import { EditBannerComponent } from '../../Components/Dialogs/edit-banner/edit-banner.component';
+import { AddBannerComponent } from '../../Components/Dialogs/add-banner/add-banner.component';
 
 @Component({
   selector: 'app-game-more-detail',
-  imports: [MatIconModule, MatButtonModule],
+  imports: [MatIconModule, MatButtonModule, MatTooltip],
   templateUrl: './game-more-detail.component.html',
   styleUrl: './game-more-detail.component.css'
 })
@@ -16,6 +20,8 @@ export class GameMoreDetailComponent implements OnInit {
   private ApiCalls = inject(ApiService)
   private router = inject(Router)
   public GameSelected?:Game
+  readonly dialog = inject(MatDialog)
+  
   ngOnInit(){
     let gamelist:Game[] = this.ApiCalls.getList()
     this.GameSelected = this.FindGameById(gamelist, this.id)
@@ -32,5 +38,16 @@ export class GameMoreDetailComponent implements OnInit {
 
   public BackToHomePage(){
     this.router.navigate([''])
+  }
+
+  AddBanner(){
+    const dialogAddRef = this.dialog.open(AddBannerComponent)
+    dialogAddRef.afterClosed().subscribe(result => {
+      if(!result) return;
+      this.GameSelected!.backgroundImageLink = result
+    })
+  }
+  EditBanner(){
+    const dialogAddRef = this.dialog.open(EditBannerComponent)
   }
 }

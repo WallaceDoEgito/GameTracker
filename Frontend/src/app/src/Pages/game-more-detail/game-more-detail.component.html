@@ -8,7 +8,13 @@
 </header>
 <main>
     <div class="banner">
-        <img src="{{GameSelected?.backgroundImageLink}}">
+        <img [src]="GameSelected?.backgroundImageLink">
+        @if (GameSelected?.backgroundImageLink == "" || GameSelected?.backgroundImageLink == undefined) {
+            <button mat-icon-button matTooltip="Adicione um banner" class="BannerChange" (click)="AddBanner()"> <mat-icon>add</mat-icon></button>
+        }
+        @else {
+            <button mat-icon-button matTooltip="Troque o banner" class="BannerChange" (click)="EditBanner()"> <mat-icon>edit</mat-icon></button>
+        }
     </div>
     <nav>
         <div class="gameTitle">{{GameSelected?.gameName}}</div>
