@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-banner',
-  imports: [FormsModule, MatInputModule, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatButtonModule],
+  imports: [FormsModule, MatInputModule, MatDialogActions, MatDialogContent, MatDialogTitle, MatButtonModule],
   templateUrl: './edit-banner.component.html',
   styleUrl: './edit-banner.component.css'
 })
