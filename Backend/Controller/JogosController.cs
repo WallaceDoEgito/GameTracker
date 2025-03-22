@@ -35,11 +35,11 @@ public class JogosController: ControllerBase {
         });
     }
 
-    [HttpPatch("{id}")]
+    [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult PatchGame(int id, JogoRequest toUpdate){
-        int columnAffected = DatabaseConnec.Update(toUpdate, id);
+        int columnAffected = DatabaseConnec.UpdateFull(toUpdate, id);
         if(columnAffected == 0) return NotFound(new{mensage = "Id not found"});
         return Ok(toUpdate);
     }

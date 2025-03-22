@@ -35,6 +35,11 @@ export class ApiService {
 
     })
   }
+  Put(game:Game){
+    this.http.put(`http://localhost:5155/api/Jogos/${game.gameId}`,game).subscribe((res) => {
+      this.Get()
+    })
+  }
   getList(){
     return this.gameList
   }

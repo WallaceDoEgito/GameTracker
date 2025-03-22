@@ -6,6 +6,7 @@ public class JogoResponse{
     public double? HoursPlayed {get; set;}
     public string? Review { get; set; }
     public byte Rating { get; set; }
+    public string? BackgroundCoverUrl {get; set;}
 
     // [JsonConstructor]
     // public JogoResponse(int gameId, string gameName, string gameImageUrl, double hoursPlayed, string review, byte rating)

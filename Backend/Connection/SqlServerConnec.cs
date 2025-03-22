@@ -8,7 +8,7 @@ namespace JogosDoAno.Connection;
 public static class DatabaseConnec{
     private static string ConnectionString = "Server=db,1433;User Id=sa;Password=JRhPRt&n#xs03i*XRCja2!;Database=GameTracker;TrustServerCertificate=True;";
     public static JogoResponse? Insert(JogoRequest game){
-        string insertQuery = "INSERT INTO Jogos(GameName,GameImageUrl,HoursPlayed,Review,Rating) OUTPUT INSERTED.* VALUES(@GameName, @GameImageUrl, @HoursPlayed, @Review, @Rating)";
+        string insertQuery = "INSERT INTO Jogos(GameName,GameImageUrl,HoursPlayed,Review,Rating,BackgroundCoverUrl) OUTPUT INSERTED.* VALUES(@GameName, @GameImageUrl, @HoursPlayed, @Review, @Rating, @BackgroundCoverUrl)";
         try {
             using (var connection = new SqlConnection(ConnectionString))
             {
@@ -46,14 +46,15 @@ public static class DatabaseConnec{
         }
     }
 
-    public static int Update(JogoRequest toupdate, int id){
-        string updateString = "UPDATE Jogos SET GameName = @GameName, GameImageUrl = @GameImageUrl, HoursPlayed = @HoursPlayed, Review = @Review, Rating = @Rating WHERE GameId = @Id";
+    public static int UpdateFull(JogoRequest toupdate, int id){
+        string updateString = "UPDATE Jogos SET GameName = @GameName, GameImageUrl = @GameImageUrl, BackgroundCoverUrl = @BackgroundCoverUrl, HoursPlayed = @HoursPlayed, Review = @Review, Rating = @Rating WHERE GameId = @Id";
         using (var connection = new SqlConnection(ConnectionString)){
             int games = connection.Execute(updateString, new
             {
                 GameName = toupdate.GameName, GameImageUrl = toupdate.GameImageUrl,
+                BackgroundCoverUrl = toupdate.BackgroundCoverUrl,
                 HoursPlayed = toupdate.HoursPlayed, Review = toupdate.Review,
-                 Rating = toupdate.Rating, Id = id
+                Rating = toupdate.Rating, Id = id
             });
             return games;
         }

@@ -8,8 +8,8 @@
 </header>
 <main>
     <div class="banner">
-        <img [src]="GameSelected?.backgroundImageLink">
-        @if (GameSelected?.backgroundImageLink == "" || GameSelected?.backgroundImageLink == undefined) {
+        <img [src]="GameSelected?.backgroundCoverUrl">
+        @if (GameSelected?.backgroundCoverUrl == "" || GameSelected?.backgroundCoverUrl == undefined) {
             <button mat-icon-button matTooltip="Adicione um banner" class="BannerChange" (click)="AddBanner()"> <mat-icon>add</mat-icon></button>
         }
         @else {

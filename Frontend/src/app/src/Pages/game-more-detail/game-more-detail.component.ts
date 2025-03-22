@@ -45,14 +45,16 @@ export class GameMoreDetailComponent implements OnInit {
     const dialogAddRef = this.dialog.open(AddBannerComponent)
     dialogAddRef.afterClosed().subscribe(result => {
       if(!result) return;
-      this.GameSelected!.backgroundImageLink = result
+      this.GameSelected!.backgroundCoverUrl = result
+      this.ApiCalls.Put(this.GameSelected!)
     })
   }
   EditBanner(){
     const dialogEditRef = this.dialog.open(EditBannerComponent)
     dialogEditRef.afterClosed().subscribe((result)=>{
       if(!result) return
-      this.GameSelected!.backgroundImageLink = result
+      this.GameSelected!.backgroundCoverUrl = result
+      this.ApiCalls.Put(this.GameSelected!)
     })
   }
 }
