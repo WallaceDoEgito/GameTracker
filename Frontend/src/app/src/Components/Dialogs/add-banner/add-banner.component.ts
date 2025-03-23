@@ -11,7 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-add-banner',
-  imports: [MatDialogTitle, MatDialogContent, MatButton, MatInputModule,MatDialogActions,MatDialogClose, FormsModule ],
+  imports: [MatDialogTitle, MatDialogContent, MatButton, MatInputModule,MatDialogActions, FormsModule ],
   templateUrl: './add-banner.component.html',
   styleUrl: './add-banner.component.css'
 })

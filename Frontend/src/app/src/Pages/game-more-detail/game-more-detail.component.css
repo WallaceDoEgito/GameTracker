@@ -57,10 +57,28 @@ nav {
     height: 10vh;
     background-color: #6a14af;
     align-items: center;
-    justify-content: center;
-    gap: 25vw;
+    justify-content:space-evenly;
     top: 50vh;
     opacity: 98%;
+}
+
+nav > button {
+    position: relative;
+    left: 10vw
+}
+.timePlayed{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+.timeText{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.timeIcon{
+    transform: scale(1.4);
 }
 .gameTitle{
     margin-left: 5vw;
