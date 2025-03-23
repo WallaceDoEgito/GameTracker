@@ -4,11 +4,11 @@ WORKDIR /app
 
 RUN npm install -g @angular/cli
 
-COPY package*.json .
+# COPY package*.json .
 
-RUN npm i
+# RUN npm i
 
-COPY . .
+# COPY . .
 
 EXPOSE 4200
 
