@@ -17,3 +17,7 @@ Com isso, após alguns segundos, o projeto subirá e você poderá acessar cada 
 - Db (não possui pagina web): localhost:1433
 
 # Projeto em execução:
+![Projeto em funcionamento](./Frontend/public/images/ProjectImage1.png)
+![Projeto em funcionamento](./Frontend/public/images/ProjectImage2.png)
+![Projeto em funcionamento](./Frontend/public/images/ProjectImage3.png)
+![Projeto em funcionamento](./Frontend/public/images/ProjectImage4.png)
