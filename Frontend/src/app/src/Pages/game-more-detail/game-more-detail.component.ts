@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditBannerComponent } from '../../Components/Dialogs/edit-banner/edit-banner.component';
 import { AddBannerComponent } from '../../Components/Dialogs/add-banner/add-banner.component';
 import { DialogRef } from '@angular/cdk/dialog';
+import { AddGameDialogPopUpComponent } from '../../Components/Dialogs/add-game-dialog-pop-up/add-game-dialog-pop-up.component';
+import { EditGameComponent } from '../../Components/Dialogs/edit-game/edit-game.component';
 
 @Component({
   selector: 'app-game-more-detail',
@@ -56,5 +58,9 @@ export class GameMoreDetailComponent implements OnInit {
       this.GameSelected!.backgroundCoverUrl = result
       this.ApiCalls.Put(this.GameSelected!)
     })
+  }
+  
+  EditGame(){
+    const dialogEditRef = this.dialog.open(EditGameComponent, {data: {game: this.GameSelected}});
   }
 }
