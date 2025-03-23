@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApiService } from '../../Services/api.service';
 import { Game } from '../../../Classes/Games';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ import { EditGameComponent } from '../../Components/Dialogs/edit-game/edit-game.
   selector: 'app-game-more-detail',
   imports: [MatIconModule, MatButtonModule, MatTooltip],
   templateUrl: './game-more-detail.component.html',
-  styleUrl: './game-more-detail.component.css'
+  styleUrl: './game-more-detail.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class GameMoreDetailComponent implements OnInit {
   @Input() id!:number
@@ -61,6 +62,13 @@ export class GameMoreDetailComponent implements OnInit {
   }
   
   EditGame(){
-    const dialogEditRef = this.dialog.open(EditGameComponent, {data: {game: this.GameSelected}});
+    const dialogEditRef = this.dialog.open(EditGameComponent, {data: {game: this.GameSelected}, panelClass: 'dialogEdit'});
+    dialogEditRef.afterClosed().subscribe(result => {
+      if(!result) return;
+      this.GameSelected!.gameName = result.newName;
+      this.GameSelected!.gameImageUrl = result.newUrl;
+      this.GameSelected!.review = result.newReview;
+      this.ApiCalls.Put(this.GameSelected!);
+    })
   }
 }
