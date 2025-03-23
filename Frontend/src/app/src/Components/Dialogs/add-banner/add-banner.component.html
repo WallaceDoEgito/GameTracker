@@ -1,0 +1,11 @@
+<h1 mat-dialog-title> Adicione um link para o banner </h1>
+<mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Link</mat-label>
+            <input matInput [(ngModel)]="linkToBanner">
+        </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="clickCancel()">Cancelar</button>
+    <button mat-button (click)="clickAdd()">Salvar banner</button>
+</mat-dialog-actions>

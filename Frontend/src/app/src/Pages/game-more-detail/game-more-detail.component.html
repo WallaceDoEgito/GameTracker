@@ -8,7 +8,41 @@
 </header>
 <main>
     <div class="banner">
-
+        <img [src]="GameSelected?.backgroundCoverUrl">
+        @if (GameSelected?.backgroundCoverUrl == "" || GameSelected?.backgroundCoverUrl == undefined) {
+            <button mat-icon-button matTooltip="Adicione um banner" class="BannerChange" (click)="AddBanner()"> <mat-icon>add</mat-icon></button>
+        }
+        @else {
+            <button mat-icon-button matTooltip="Troque o banner" class="BannerChange" (click)="EditBanner()"> <mat-icon>edit</mat-icon></button>
+        }
     </div>
+    <nav>
+        <div class="gameTitle">{{GameSelected?.gameName}}</div>
+        <div class="timePlayed">
+            <mat-icon class="timeIcon">access_time</mat-icon>
+            <div class="timeText">
+                <h5>Tempo de Jogo</h5>
+                <span>{{GameSelected?.hoursPlayed?.toFixed(2)}}h</span>
+            </div>
+        </div>
+        <div class="stars"></div>
+        <button mat-raised-button (click)="EditGame()">editar</button>
+    </nav>
+    <div class="content">
+        <div class="review">Review: <br><i>{{GameSelected?.review}}</i></div>
+        
+    </div>
+    <section>
+        <div class="navSec">
+            <h1 id="sections">Seções:</h1>
+            <button class="addTime" mat-icon-button matTooltip="Adicione tempo de jogo">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+    </section>
     
+    <div class="gameImage">
+        <img src="{{GameSelected?.gameImageUrl}}" width="265px" height="394px">
+    </div>
 </main>

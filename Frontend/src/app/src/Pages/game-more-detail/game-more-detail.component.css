@@ -1,3 +1,7 @@
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
 .HeaderBar{
     background-color:#1C0430 ;
     height: 10vh;
@@ -15,4 +19,109 @@
 
 #GoBack{
     margin-left: 1vw;
+}
+
+.banner{
+    overflow: hidden;
+}
+
+.banner > img{
+    width: 100%;
+    height: 100%;
+    opacity: 40%;
+    object-fit: cover;
+    object-position: center top;
+    position: absolute;
+}
+
+.gameImage{
+    position: absolute;
+    top: 35vh;
+    left: 5vw;
+    overflow: hidden;
+}
+.gameImage > img{
+    border: 4px solid #3E076C;
+    object-fit: cover;
+}
+.BannerChange{
+    margin-left: 98vw;
+    margin-top: 0.5vh;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+    background-color: #6a14af;
+    align-items: center;
+    justify-content:space-evenly;
+    top: 50vh;
+    opacity: 98%;
+}
+
+nav > button {
+    position: relative;
+    left: 10vw
+}
+.timePlayed{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+.timeText{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.timeIcon{
+    transform: scale(1.4);
+}
+.gameTitle{
+    margin-left: 5vw;
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+.content{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #1E1E1E;
+    top: 59.9vh;
+}
+
+nav > button {
+    padding-left: auto  ;
+}
+
+.review{
+    color: rgba(194, 194, 194, 0.87);
+    font-size: 20px;
+    max-width: 30vw;
+    margin: auto;
+    text-align: center;
+    text-wrap:balance;
+    margin-top: 4vw;
+}
+
+.navSec{
+    display: flex;
+    position: absolute;
+    top: 93vh;
+    width: 100%;
+    justify-content: space-between;
+    overflow:hidden
+}
+
+#sections{
+    color: rgb(219, 219, 219);
+    margin-left: 5vw;
+}
+
+.addTime{
+    margin-right: 5vw;
 }

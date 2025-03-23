@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {OutsideClickDirective} from '../../Directives/outside-click.directive'
+import {OutsideClickDirective} from '../../../Directives/outside-click.directive'
 import { NgOptimizedImage } from '@angular/common';
-import { Game } from '../../../Classes/Games';
+import { Game } from '../../../../Classes/Games';
 
 @Component({
   selector: 'app-add-game-dialog-pop-up',
