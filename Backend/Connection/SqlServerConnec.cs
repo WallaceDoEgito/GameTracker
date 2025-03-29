@@ -59,4 +59,20 @@ public static class DatabaseConnec{
             return games;
         }
     }
+
+    public static int PostSession(TimeSession newTimeSession){
+        string postSessionSQL = "INSERT INTO GameSessions(GameId, SessionDate, SessionHours) VALUES (@GameId, @SessionDate, @SessionHours)";
+        using(var connection = new SqlConnection(ConnectionString)){
+            int newSession = connection.Execute(postSessionSQL, newTimeSession);
+            return newSession;
+        }
+        
+    }
+    public static List<TimeSession> GetSessions(int id){
+        string getSessionsSQL = "SELECT [GameId], [SessionsDate], [SessionsHours] FROM GameSessions WHERE GameId = @GameId";
+        using(var connection = new SqlConnection(ConnectionString)){
+            List<TimeSession> sessions = connection.Query<TimeSession>(getSessionsSQL, new {GameId = id}).ToList<TimeSession>();
+            return sessions;
+        }
+    }
 }
