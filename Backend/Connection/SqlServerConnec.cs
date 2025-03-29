@@ -60,19 +60,28 @@ public static class DatabaseConnec{
         }
     }
 
-    public static int PostSession(TimeSession newTimeSession){
+    public static int PostSession(int id, TimeSession newTimeSession){
         string postSessionSQL = "INSERT INTO GameSessions(GameId, SessionDate, SessionHours) VALUES (@GameId, @SessionDate, @SessionHours)";
+        var parameters = new {SessionDate = newTimeSession.SessionDate.ToDateTime(TimeOnly.MinValue), SessionHours = newTimeSession.SessionHours.ToTimeSpan()};
         using(var connection = new SqlConnection(ConnectionString)){
-            int newSession = connection.Execute(postSessionSQL, newTimeSession);
+            int newSession = connection.Execute(postSessionSQL, new {GameId = id, SessionDate = parameters.SessionDate, SessionHours = parameters.SessionHours});
             return newSession;
         }
         
     }
-    public static List<TimeSession> GetSessions(int id){
-        string getSessionsSQL = "SELECT [GameId], [SessionsDate], [SessionsHours] FROM GameSessions WHERE GameId = @GameId";
-        using(var connection = new SqlConnection(ConnectionString)){
-            List<TimeSession> sessions = connection.Query<TimeSession>(getSessionsSQL, new {GameId = id}).ToList<TimeSession>();
+    public static List<TimeSession>? GetSessions(int id){
+        string getSessionsSQL = "SELECT [GameId],[SessionDate], [SessionHours] FROM GameSessions WHERE GameId = @GameId";
+        try
+        {
+            using(var connection = new SqlConnection(ConnectionString)){
+            List<TimeSession> sessions = connection.Query(getSessionsSQL, new {GameId = id}).Select(row => new TimeSession(row.SessionDate, row.SessionHours)).ToList();
             return sessions;
+        }
+        }
+        catch (System.Exception)
+        {
+            
+            return null;
         }
     }
 }
