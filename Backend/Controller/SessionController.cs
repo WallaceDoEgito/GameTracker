@@ -17,7 +17,7 @@ namespace Backend.Controller
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public IActionResult CreateSession(int id, TimeSession toCreate)
+        public IActionResult CreateSession(int id, [FromBody]TimeSession toCreate)
         {
             if(id == 0 || toCreate.SessionDate == DateOnly.MinValue || toCreate.SessionHours == TimeOnly.MinValue) return StatusCode(400, new {mensage = "Verifique os campos e tente novamente"});
             var Check = DatabaseConnec.GetById(id);
