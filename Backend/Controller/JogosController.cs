@@ -24,6 +24,15 @@ public class JogosController: ControllerBase {
         return Ok(result);
     }
 
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult GetGameById(int id){
+        var result = DatabaseConnec.GetById(id);
+        if(result == null) return StatusCode(404, new {mensage = "Nao existe um jogo com esse Id"});
+        return Ok(result);
+    }
+
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]

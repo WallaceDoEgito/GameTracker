@@ -21,6 +21,22 @@ public static class DatabaseConnec{
         }
     }
 
+    public static JogoResponse? GetById(int id){
+        string selectionQuery = "SELECT * FROM Jogos WHERE GameId = @Id;";
+        try
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                var game = connection.QuerySingle<JogoResponse>(selectionQuery, new {Id = id});
+                return game;
+            }
+        }
+        catch (InvalidOperationException)
+        {
+            return null;
+        }
+    }
+
     public static List<JogoResponse>? GetAll(){
         string selectionQuery = "SELECT * FROM Jogos ORDER BY HoursPlayed DESC";
         try
