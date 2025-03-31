@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IGame } from '../../Interfaces/Game';
 import { Game } from '../../Classes/Games';
+import { SessionTime } from '../../Classes/SessionTime';
 
 
 @Injectable({
@@ -42,5 +43,19 @@ export class ApiService {
   }
   getList(){
     return this.gameList
+  }
+
+  getSession(id:number) : SessionTime[]{
+    let Times : SessionTime[] = []
+    this.http.get<SessionTime[]>(`http://localhost:5155/api/Session/${id}`).subscribe(element => {
+      for(let session of element){
+        Times.push(session);
+      }
+
+    })
+    console.log(Times);
+    return Times;
+
+
   }
 }
