@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit, ViewEncapsulation, afterRender } from '@angular/core';
 import { ApiService } from '../../Services/api.service';
 import { Game } from '../../../Classes/Games';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltip} from '@angular/material/tooltip';
@@ -23,18 +23,28 @@ import { AddSessionComponent } from '../../Components/Dialogs/add-session/add-se
   encapsulation: ViewEncapsulation.None
 })
 export class GameMoreDetailComponent implements OnInit {
-  @Input() id!:number
+  id!:number
   private ApiCalls = inject(ApiService)
   private router = inject(Router)
+  private activeRoutes = inject(ActivatedRoute)
   public GameSelected?:Game
   readonly dialog = inject(MatDialog)
   public GameSessions? : SessionTime[]
   public TotalHoursPlayed:number = 0;
+  private editMode? : string;
+  private addTimeMode?:string
 
     async ngOnInit(){
+    this.id = Number.parseInt(this.activeRoutes.snapshot.paramMap.get('id')!) ?? -1;
     let gamelist:Game[] = this.ApiCalls.getList()
     this.GameSelected = this.FindGameById(gamelist, this.id)
     this.GameSessions = await this.ApiCalls.getSession(this.id)
+    this.activeRoutes.queryParams.subscribe(params=>{
+      this.editMode = params['editMode']
+      this.addTimeMode = params['addTimeMode']
+    })
+    if(this.editMode == "true") this.EditGame();
+    else if(this.addTimeMode == "true") this.AddSession();
     if(this.GameSelected == undefined) this.BackToHomePage();
     this.CalcTotalTime();
   }

@@ -16,11 +16,11 @@
             <mat-icon>delete</mat-icon>
             <span>Deletar Jogo</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['game',gameInput.gameId]" [queryParams]="{editMode: 'true'}">
             <mat-icon>edit</mat-icon>
             <span>Editar</span>
         </button>
-        <button mat-menu-item >
+        <button mat-menu-item [routerLink]="['game',gameInput.gameId]" [queryParams]="{addTimeMode: 'true'}">
             <mat-icon>add</mat-icon>
             <span>Adicionar Tempo</span>
         </button>
