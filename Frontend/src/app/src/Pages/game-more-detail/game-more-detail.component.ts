@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewEncapsulation, afterRender } from '@angular/core';
 import { ApiService } from '../../Services/api.service';
 import { Game } from '../../../Classes/Games';
 import { Router } from '@angular/router';
@@ -11,6 +11,8 @@ import { AddBannerComponent } from '../../Components/Dialogs/add-banner/add-bann
 import { DialogRef } from '@angular/cdk/dialog';
 import { AddGameDialogPopUpComponent } from '../../Components/Dialogs/add-game-dialog-pop-up/add-game-dialog-pop-up.component';
 import { EditGameComponent } from '../../Components/Dialogs/edit-game/edit-game.component';
+import { SessionTime } from '../../../Classes/SessionTime';
+import { firstValueFrom, lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-game-more-detail',
@@ -25,11 +27,15 @@ export class GameMoreDetailComponent implements OnInit {
   private router = inject(Router)
   public GameSelected?:Game
   readonly dialog = inject(MatDialog)
+  public GameSessions? : SessionTime[]
+  public TotalHoursPlayed:number = 0;
 
-  ngOnInit(){
+    async ngOnInit(){
     let gamelist:Game[] = this.ApiCalls.getList()
     this.GameSelected = this.FindGameById(gamelist, this.id)
-    if(this.GameSelected == undefined) this.router.navigate([''])
+    this.GameSessions = await this.ApiCalls.getSession(this.id)
+    if(this.GameSelected == undefined) this.BackToHomePage();
+    this.TotalHoursPlayed = this.CalcTotalTime();
   }
 
   private FindGameById(list:Game[], id:number)
@@ -38,6 +44,16 @@ export class GameMoreDetailComponent implements OnInit {
       if(game.gameId == id) return game
     }
     return undefined
+  }
+
+  private CalcTotalTime() : number{
+    let totalSum = this.GameSelected!.hoursPlayed;
+    for(let g of this.GameSessions!){
+      console.log(g);
+      totalSum += Number.parseInt(g.sessionHours.slice(0,2))
+      totalSum += Number.parseFloat(g.sessionHours.slice(3,5)) / 60
+    }
+    return totalSum;
   }
 
   public BackToHomePage(){

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IGame } from '../../Interfaces/Game';
 import { Game } from '../../Classes/Games';
 import { SessionTime } from '../../Classes/SessionTime';
+import { lastValueFrom, map } from 'rxjs';
 
 
 @Injectable({
@@ -45,17 +46,12 @@ export class ApiService {
     return this.gameList
   }
 
-  getSession(id:number) : SessionTime[]{
-    let Times : SessionTime[] = []
-    this.http.get<SessionTime[]>(`http://localhost:5155/api/Session/${id}`).subscribe(element => {
-      for(let session of element){
-        Times.push(session);
-      }
-
-    })
-    console.log(Times);
-    return Times;
-
-
+  async getSession(id:number){
+    const req$ = this.http.get<SessionTime[]>(`http://localhost:5155/api/Session/${id}`).pipe(
+      map(el => el.map(
+        session => new SessionTime(session.sessionDate, session.sessionHours)
+      ))
+    )
+    return lastValueFrom(req$)
   }
 }
