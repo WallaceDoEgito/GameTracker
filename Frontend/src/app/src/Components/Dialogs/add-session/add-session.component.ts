@@ -9,7 +9,7 @@ import {
 } from '@angular/material/dialog';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-session',
@@ -24,7 +24,7 @@ export class AddSessionComponent implements OnInit {
   minDate = "1958-10-18" // dia da criacao do primeiro jogo
   maxDate! : String;
   dialogRef = inject(MatDialogRef<AddSessionComponent>)
-  dateFormControl = new FormControl('', [Validators.required])
+  dateFormControl = new FormControl('', [Validators.required, this.maxDateValidator(new Date()), this.minDateValidator(new Date(this.minDate))])
   timeFormControl = new FormControl('', [Validators.required])
 
   ngOnInit(): void {
@@ -32,9 +32,39 @@ export class AddSessionComponent implements OnInit {
   }
 
   AddSession(){
-    if(this.dateFormControl.hasError("required") || this.timeFormControl.hasError("required")) return;
+    if(this.dateFormControl.hasError("required") || this.dateFormControl.hasError("maxDate")|| this.dateFormControl.hasError("minDate")|| this.timeFormControl.hasError("required")) return;
     this.dialogRef.close({date: this.date, time:this.time });
 
   }
 
+  private maxDateValidator(maxDate: Date): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (!control.value) {
+        return null;
+      }
+  
+      const selectedDate = new Date(control.value);  
+      if (selectedDate > maxDate) {
+        return { maxDate: true };
+      }
+  
+      return null;
+    };
+  }
+  private minDateValidator(minDate: Date): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (!control.value) {
+        return null;
+      }
+  
+      const selectedDate = new Date(control.value);  
+      if (selectedDate < minDate) {
+        return { minDate: true };
+      }
+  
+      return null;
+    };
+
+
+}
 }

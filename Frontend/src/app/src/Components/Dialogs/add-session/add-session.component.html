@@ -6,6 +6,12 @@
         @if(dateFormControl.hasError("required")){
             <mat-error>Esse campo é requerido</mat-error>
         }
+        @else if(dateFormControl.hasError("maxDate")){
+            <mat-error>Voce jogou isso no futuro???</mat-error>
+        }
+        @else if(dateFormControl.hasError("minDate")){
+            <mat-error>O primeiro video game foi criado em 1952</mat-error>
+        }
     </mat-form-field>
     <mat-form-field>
         <mat-label>Tempo jogado</mat-label>
