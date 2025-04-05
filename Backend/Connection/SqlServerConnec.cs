@@ -6,7 +6,7 @@ using Microsoft.Data.SqlClient;
 namespace JogosDoAno.Connection;
 
 public static class DatabaseConnec{
-    private static string ConnectionString = "Server=localhost,1433;User Id=sa;Password=JRhPRt&n#xs03i*XRCja2!;Database=GameTracker;TrustServerCertificate=True;";
+    private static string ConnectionString = "Server=db,1433;User Id=sa;Password=JRhPRt&n#xs03i*XRCja2!;Database=GameTracker;TrustServerCertificate=True;";
     public static JogoResponse? Insert(JogoRequest game){
         string insertQuery = "INSERT INTO Jogos(GameName,GameImageUrl,HoursPlayed,Review,Rating,BackgroundCoverUrl) OUTPUT INSERTED.* VALUES(@GameName, @GameImageUrl, @HoursPlayed, @Review, @Rating, @BackgroundCoverUrl)";
         try {

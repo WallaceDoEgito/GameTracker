@@ -12,4 +12,12 @@ CREATE TABLE Jogos(
     HoursPlayed REAL,
     Review VARCHAR(1024),
     Rating TINYINT 
-);  
+)
+GO
+
+CREATE TABLE GameSessions(
+    GameId INT FOREIGN KEY REFERENCES Jogos(GameId) on delete cascade,
+    SessionDate DATE NOT NULL,
+    SessionHours TIME NOT NULL
+  )
+;  
