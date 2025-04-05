@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IGame } from '../../Interfaces/Game';
 import { Game } from '../../Classes/Games';
 import { SessionTime } from '../../Classes/SessionTime';
-import { lastValueFrom, map } from 'rxjs';
+import { catchError, firstValueFrom, lastValueFrom, map } from 'rxjs';
 
 
 @Injectable({
@@ -26,6 +26,11 @@ export class ApiService {
     })
     return this.gameList;
   }
+
+  GetByid(id:number){
+    return firstValueFrom(this.http.get<Game>(`http://localhost:5155/api/Jogos/${id}`))
+  }
+
   Post(game:Game){
     this.http.post<Game>("http://localhost:5155/api/Jogos", game).subscribe((config) => {
       this.Get()

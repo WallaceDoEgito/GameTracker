@@ -36,8 +36,11 @@ export class GameMoreDetailComponent implements OnInit {
 
     async ngOnInit(){
     this.id = Number.parseInt(this.activeRoutes.snapshot.paramMap.get('id')!) ?? -1;
-    let gamelist:Game[] = this.ApiCalls.getList()
-    this.GameSelected = this.FindGameById(gamelist, this.id)
+    try {
+      this.GameSelected = await this.ApiCalls.GetByid(this.id);
+    } catch (error) {
+      this.BackToHomePage();
+    }
     this.GameSessions = await this.ApiCalls.getSession(this.id)
     this.activeRoutes.queryParams.subscribe(params=>{
       this.editMode = params['editMode']
@@ -60,7 +63,6 @@ export class GameMoreDetailComponent implements OnInit {
   private CalcTotalTime() : void{
     let totalSum = this.GameSelected!.hoursPlayed;
     for(let g of this.GameSessions!){
-      console.log(g);
       totalSum += Number.parseInt(g.sessionHours.slice(0,2))
       totalSum += Number.parseFloat(g.sessionHours.slice(3,5)) / 60
     }
