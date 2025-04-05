@@ -22,7 +22,7 @@
             <mat-icon class="timeIcon">access_time</mat-icon>
             <div class="timeText">
                 <h5>Tempo de Jogo</h5>
-                <span>{{GameSelected?.hoursPlayed?.toFixed(2)}}h</span>
+                <span>{{TotalHoursPlayed.toFixed(2)}}h</span>
             </div>
         </div>
         <div class="stars"></div>
@@ -38,6 +38,20 @@
             <button class="addTime" mat-icon-button matTooltip="Adicione tempo de jogo">
                 <mat-icon>add</mat-icon>
             </button>
+        </div>
+
+        <div class="restrospec">
+            <span>Você iniciou com {{GameSelected?.hoursPlayed?.toFixed(2)}}h Jogadas</span>
+            @for(session of GameSessions; track $index){
+                <div class="Linebreaker">|<br>|<br></div>
+                <div class="Linebreaker">|<br>|<br></div>
+                <div>
+                    <span class="date">{{session.sessionDate.slice(8)}}/{{session.sessionDate.slice(5,7)}}/{{session.sessionDate[0]}}{{session.sessionDate[3]}} - </span>
+                    <span>Você jogou </span>
+                    <span>{{session.sessionHours}}</span>
+
+                </div>
+            }
         </div>
 
     </section>

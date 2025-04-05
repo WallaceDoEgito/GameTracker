@@ -125,3 +125,13 @@ nav > button {
 .addTime{
     margin-right: 5vw;
 }
+
+.restrospec{
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    top: 98vh;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
