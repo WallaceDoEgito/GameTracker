@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Adicionar novo tempo de jogo</h1>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Data</mat-label>
+        <input matInput type="date" required [formControl]="dateFormControl" [(ngModel)]="date" min="1958-10-18" [max]="maxDate">
+        @if(dateFormControl.hasError("required")){
+            <mat-error>Esse campo é requerido</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Tempo jogado</mat-label>
+        <input matInput type="time" required [formControl]="timeFormControl" [(ngModel)]="time" [step]="1">
+        @if(timeFormControl.hasError("required")){
+            <mat-error>Esse campo é requerido</mat-error>
+        }
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button matDialogClose="">
+        Fechar
+    </button>
+    <button mat-button (click)="AddSession()">
+        Adicionar
+    </button>
+</mat-dialog-actions>
