@@ -86,7 +86,7 @@ public static class DatabaseConnec{
         
     }
     public static List<TimeSession>? GetSessions(int id){
-        string getSessionsSQL = "SELECT [GameId],[SessionDate], [SessionHours] FROM GameSessions WHERE GameId = @GameId";
+        string getSessionsSQL = "SELECT [GameId],[SessionDate], [SessionHours] FROM GameSessions WHERE GameId = @GameId ORDER BY [SessionDate] ASC";
         try
         {
             using(var connection = new SqlConnection(ConnectionString)){
