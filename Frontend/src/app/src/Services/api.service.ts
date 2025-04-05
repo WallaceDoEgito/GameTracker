@@ -54,4 +54,8 @@ export class ApiService {
     )
     return lastValueFrom(req$)
   }
+  postSession(id:number, postRequest:SessionTime){
+    console.log(postRequest.sessionDate, postRequest.sessionHours)
+    this.http.post(`http://localhost:5155/api/Session/${id}`, postRequest).subscribe(config => console.log(config))
+  }
 }

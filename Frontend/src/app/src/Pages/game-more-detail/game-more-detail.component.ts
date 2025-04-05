@@ -13,6 +13,7 @@ import { AddGameDialogPopUpComponent } from '../../Components/Dialogs/add-game-d
 import { EditGameComponent } from '../../Components/Dialogs/edit-game/edit-game.component';
 import { SessionTime } from '../../../Classes/SessionTime';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { AddSessionComponent } from '../../Components/Dialogs/add-session/add-session.component';
 
 @Component({
   selector: 'app-game-more-detail',
@@ -35,7 +36,7 @@ export class GameMoreDetailComponent implements OnInit {
     this.GameSelected = this.FindGameById(gamelist, this.id)
     this.GameSessions = await this.ApiCalls.getSession(this.id)
     if(this.GameSelected == undefined) this.BackToHomePage();
-    this.TotalHoursPlayed = this.CalcTotalTime();
+    this.CalcTotalTime();
   }
 
   private FindGameById(list:Game[], id:number)
@@ -46,14 +47,14 @@ export class GameMoreDetailComponent implements OnInit {
     return undefined
   }
 
-  private CalcTotalTime() : number{
+  private CalcTotalTime() : void{
     let totalSum = this.GameSelected!.hoursPlayed;
     for(let g of this.GameSessions!){
       console.log(g);
       totalSum += Number.parseInt(g.sessionHours.slice(0,2))
       totalSum += Number.parseFloat(g.sessionHours.slice(3,5)) / 60
     }
-    return totalSum;
+    this.TotalHoursPlayed = totalSum;
   }
 
   public BackToHomePage(){
@@ -85,6 +86,17 @@ export class GameMoreDetailComponent implements OnInit {
       this.GameSelected!.gameImageUrl = result.newUrl;
       this.GameSelected!.review = result.newReview;
       this.ApiCalls.Put(this.GameSelected!);
+    })
+  }
+
+  AddSession(){
+    const dialogRef = this.dialog.open(AddSessionComponent)
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.date == undefined || result.time == undefined) return;
+      let session = new SessionTime(result.date, result.time)
+      this.GameSessions?.push(session)
+      this.CalcTotalTime();
+      this.ApiCalls.postSession(this.GameSelected!.gameId, session)
     })
   }
 }

@@ -35,7 +35,7 @@
     <section>
         <div class="navSec">
             <h1 id="sections">Seções:</h1>
-            <button class="addTime" mat-icon-button matTooltip="Adicione tempo de jogo">
+            <button class="addTime" mat-icon-button matTooltip="Adicione tempo de jogo" (click)="AddSession()">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -46,7 +46,7 @@
                 <div class="Linebreaker">|<br>|<br></div>
                 <div class="Linebreaker">|<br>|<br></div>
                 <div>
-                    <span class="date">{{session.sessionDate.slice(8)}}/{{session.sessionDate.slice(5,7)}}/{{session.sessionDate[0]}}{{session.sessionDate[3]}} - </span>
+                    <span class="date">{{session.sessionDate.slice(8)}}/{{session.sessionDate.slice(5,7)}}/{{session.sessionDate[2]}}{{session.sessionDate[3]}} - </span>
                     <span>Você jogou </span>
                     <span>{{session.sessionHours}}</span>
 
