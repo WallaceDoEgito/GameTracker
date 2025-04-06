@@ -39,5 +39,14 @@ namespace Backend.Controller
             return StatusCode(200, allSessions);
         }
         
+        [HttpGet("twoWeekInterval/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetSessionsTwoWeek(int id){
+            List<TimeSession>? sessions = DatabaseConnec.GetSessionsTwoWeek(id);
+            if(sessions == null) return StatusCode(500, new {mensage = "Tente novamente mais tarde"});
+            return StatusCode(200, sessions);
+        }
+
     }
 }

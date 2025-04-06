@@ -100,4 +100,20 @@ public static class DatabaseConnec{
             return null;
         }
     }
+
+    public static List<TimeSession>? GetSessionsTwoWeek(int id){
+        string getTwoWeek = "SELECT * FROM GameSessions WHERE GameId = @GameId AND SessionDate BETWEEN DATEADD(WEEK, -2, GETDATE()) AND GETDATE() ORDER BY SessionDate ASC";
+        try
+        {
+            using(var connection = new SqlConnection(ConnectionString)){
+                List<TimeSession> sec = connection.Query(getTwoWeek, new {GameId = id}).Select(row => new TimeSession(row.SessionDate, row.SessionHours)).ToList();
+                return sec;
+            }
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
 }
