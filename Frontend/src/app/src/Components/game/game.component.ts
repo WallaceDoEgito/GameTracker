@@ -21,12 +21,16 @@ export class GameComponent implements OnInit{
   dialog = inject(MatDialog)
   apiCall = inject(ApiService)
   sessions! : SessionTime[]
+  semanalSessions!:SessionTime[]
 
-  totalTime = 0 
+  totalTime = 0
+  semanalTime = 0
 
   async ngOnInit() {
       this.sessions = await this.apiCall.getSession(this.gameInput.gameId)
       this.CalcTotalTime();
+      this.semanalSessions = await this.apiCall.getSessionsInterval(this.gameInput.gameId);
+      this.CalcSemanalTime();
   }
 
   private CalcTotalTime() : void{
@@ -36,6 +40,15 @@ export class GameComponent implements OnInit{
       totalSum += Number.parseFloat(g.sessionHours.slice(3,5)) / 60
     }
     this.totalTime = totalSum;
+  }
+
+  private CalcSemanalTime():void {
+    let sum = 0;
+    for(let g of this.semanalSessions){
+      sum += Number.parseInt(g.sessionHours.slice(0,2))
+      sum += Number.parseFloat(g.sessionHours.slice(3,5)) / 60
+    }
+    this.semanalTime = sum;
   }
   
 
